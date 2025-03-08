@@ -1,13 +1,14 @@
 {
     "listName": "BrandList",
     "styleVars": {
-      "name" : ["category","country"
+      "name" : ["category","country","timezone"
         ],
       "values" : [
             ["type1", "type1", "type1", "type1", "type2", "type2", "type2", "type2"
             ],
             ["US", "US", "US", "US", "UK", "UK", "UK", "UK"
-            ]
+            ],
+            ["EST", "EST", "EST", "EST", "GMT", "GMT", "GMT", "GMT"]
         ]
     },
     "rowLabel": "Br",
