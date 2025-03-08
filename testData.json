@@ -1,0 +1,15 @@
+{
+    "listName": "BrandList",
+    "styleVars": {
+      "name" : ["category","country"
+        ],
+      "values" : [
+            ["type1", "type1", "type1", "type1", "type2", "type2", "type2", "type2"
+            ],
+            ["US", "US", "US", "US", "UK", "UK", "UK", "UK"
+            ]
+        ]
+    },
+    "listRows": ["Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7", "Brand 8"
+    ]
+}
