@@ -42,6 +42,15 @@
   color: #888;
 }
 
+input{
+  padding: 5px;
+}
+
+input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+}
+
 #mainContainer{
 width: 100%;
 }
@@ -57,6 +66,7 @@ width: 100%;
 
 .container1{
   display: flex;
+  flex-wrap: wrap;
   gap:15px;
 }
 
