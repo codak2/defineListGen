@@ -99,7 +99,6 @@ const handleStyleVarValueChange = (e) => {
 
 
 
-
   return (
     <>
       <main id='mainContainer'>
@@ -117,9 +116,19 @@ const handleStyleVarValueChange = (e) => {
         /> 
 
         <div className="contentContainer">
-            <ListContainer />
+            <ListContainer 
+            listRows={listData.listRows.join("\n").split(',')}
+            handleListRowsChange={handleListRowsChange}
+            handleClearText={handleListDataChange}
+            />
             <SVContainer />
-            <OutputContainer />
+
+
+            <OutputContainer
+            outputValue={output.join("\n")}
+            
+            />
+
         </div>
 
       </main>

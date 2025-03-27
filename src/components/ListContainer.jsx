@@ -1,14 +1,22 @@
 import React from 'react'
 
-const ListContainer = () => {
+const ListContainer = (props) => {
   return (
     <>
     <div id="listContainer" className='container2'>
             <label htmlFor=""> List Rows <br />
-              <textarea name="" id="" placeholder='Enter List Rows' cols="40" rows="40"></textarea>
+              <textarea name="" id="" 
+              placeholder='Enter List Rows' 
+              cols="40" 
+              rows="40"
+              value={props.listRows}
+              onChange={props.handleListRowsChange}
+              />
             </label>
 
-            <button type="button">Clear List Rows</button>
+            <button type="button"
+            onClick={() => props.handleClearText('listRows', "")}
+            >Clear List Rows</button>
           </div>
     </>
   )

@@ -1,11 +1,16 @@
 import React from 'react'
 
-const OutputContainer = () => {
+const OutputContainer = (props) => {
   return (
     <>
               <div id="outputContainer" className='container2' style={{ "width": "20rem" }}>
             <label htmlFor=""> Output <br />
-              <textarea name="" id="" placeholder='Output will be generated here....' cols="40" rows="40"></textarea>
+              <textarea name="" id="" 
+              placeholder='Output will be generated here....' 
+              cols="40" rows="40"
+              value={props.outputValue}
+              
+              />
             </label>
 
             <div className="container1">
