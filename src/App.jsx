@@ -7,6 +7,9 @@ import ListContainer from "./components/ListContainer"
 import SVContainer from "./components/SVContainer"
 import OutputContainer from "./components/OutputContainer"
 
+// function
+import genList from "./utils/genList.js"
+
 
 
 function App() {
@@ -45,7 +48,7 @@ function App() {
     ],
   });
 
-  let [output, setOutput] = useState([]);
+  let [output, setOutput] = useState("");
 
 
   const handleListDataChange = (key, value) => {
@@ -138,6 +141,14 @@ const handleStyleVarValueChange = (e, index) => {
       });
     }
   }
+
+
+const handleGenList = () =>{
+  setOutput(genList(listData))
+}
+
+
+
   
 
 
@@ -187,7 +198,9 @@ const handleStyleVarValueChange = (e, index) => {
 
 
           <OutputContainer
-            outputValue={output.join("\n")}
+            outputValue={output}
+            handleGenList={handleGenList}
+            
 
           />
 
