@@ -15,7 +15,7 @@ const ListContainer = (props) => {
             </label>
 
             <button type="button"
-            onClick={() => props.handleClearText('listRows', "")}
+            onClick={() => props.handleClearText('listRows', [""])}
             >Clear List Rows</button>
           </div>
     </>

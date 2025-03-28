@@ -9,7 +9,7 @@ const OutputContainer = (props) => {
               placeholder='Output will be generated here....' 
               cols="40" rows="40"
               value={props.outputValue}
-              
+              readOnly
               />
             </label>
 

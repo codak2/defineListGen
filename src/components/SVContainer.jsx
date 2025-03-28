@@ -7,7 +7,9 @@ const SVContainer = (props) => {
     <div id="stylevarContainer" className='container2'>
             <label htmlFor=""> Stylevar Values <br />
               <textarea name="" id="" 
-              placeholder='Enter Stylevar Values' cols="30" rows="40"
+              placeholder='Enter Stylevar Values' 
+              cols="30" 
+              rows="40"
               value={props.SVValue.join("\n")}
               onChange={(e) => props.handleStyleVarValueChange(e, props.index)}
               />
@@ -17,7 +19,6 @@ const SVContainer = (props) => {
               <input type="text" 
               placeholder='Enter Stylevar Name'
               value={props.SVName}
-              key={props.index}
               onChange={(e) => props.handleStyleVarChange(e, props.index)}
               />
             </label>
@@ -31,3 +32,5 @@ const SVContainer = (props) => {
 }
 
 export default SVContainer
+
+// TODO: lost focus while typing stylevar name
