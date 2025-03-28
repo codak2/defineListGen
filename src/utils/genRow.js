@@ -1,6 +1,8 @@
 // Function to generate a single row element
-function genRow(rowName, index, SVNameArray, SVValueArray, rowLabel) {
-    let rowOutput = `<row label="${rowLabel}${index + 1}" value="${index + 1}"`;
+function genRow(rowName, index, SVNameArray, SVValueArray, rowLabel,isRowValues) {
+
+    let value = isRowValues ? `value="${index + 1}"` : ""
+    let rowOutput = `<row label="${rowLabel}${index + 1}" ${value}`;
 
     // Add style variable values
     SVNameArray.forEach((svName, svIndex) => {
