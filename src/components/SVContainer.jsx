@@ -1,18 +1,30 @@
+
 import React from 'react'
 
-const SVContainer = () => {
+const SVContainer = (props) => {
   return (
     <>
     <div id="stylevarContainer" className='container2'>
             <label htmlFor=""> Stylevar Values <br />
-              <textarea name="" id="" placeholder='Enter Stylevar Values' cols="40" rows="40"></textarea>
+              <textarea name="" id="" 
+              placeholder='Enter Stylevar Values' cols="30" rows="40"
+              value={props.SVValue.join("\n")}
+              onChange={(e) => props.handleStyleVarValueChange(e, props.index)}
+              />
             </label>
 
             <label htmlFor=""> Stylevar Name <br />
-              <input type="text" placeholder='Enter Stylevar Name' />
+              <input type="text" 
+              placeholder='Enter Stylevar Name'
+              value={props.SVName}
+              key={props.index}
+              onChange={(e) => props.handleStyleVarChange(e, props.index)}
+              />
             </label>
 
-            <button type="button">Remove Stylevar</button>
+            <button type="button"
+            onClick={() => props.handleRemoveStylevar(props.index)}
+            >Remove Stylevar</button>
           </div>
     </>
   )

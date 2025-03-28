@@ -10,7 +10,7 @@ import OutputContainer from "./components/OutputContainer"
 
 
 function App() {
-  
+
   let [listData, setListData] = useState({
     listName: "BrandList",
     styleVars: {
@@ -48,86 +48,148 @@ function App() {
   let [output, setOutput] = useState([]);
 
 
-const handleListDataChange = (key, value) => {
+  const handleListDataChange = (key, value) => {
+    setListData(prevState => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+
+
+  const handleListNameChange = (e) => {
+    handleListDataChange('listName', e.target.value);
+  };
+
+  const handleRowLabelChange = (e) => {
+    handleListDataChange('rowLabel', e.target.value);
+  };
+
+  const handleAddRowValues = (e) => {
+    handleListDataChange('isRowValues', !listData.isRowValues)
+  }
+
+  const handleCollapseDupes = (e) => {
+    handleListDataChange('isCollapseDupes', !listData.isCollapseDupes)
+  }
+
+  // Function to Add Style Vars
+  const handleAddStylevar = () => {
+    const newSVName = ""; 
+    const newSVValues = [""]; 
+  
+    setListData(prevState => ({
+      ...prevState,
+      styleVars: {
+        name: [...prevState.styleVars.name, newSVName], 
+        values: [...prevState.styleVars.values, newSVValues],
+      }
+    }));
+  };
+
+// Function to Update List Rows
+  const handleListRowsChange = (e) => {
+    handleListDataChange('listRows', e.target.value.split('\n'));
+  };
+
+// Function to Update Style Var Name
+const handleStyleVarChange = (e, index) => {
+  const updatedSVName = e.target.value;
   setListData(prevState => ({
     ...prevState,
-    [key]: value,
+    styleVars: {
+      ...prevState.styleVars,
+      name: prevState.styleVars.name.map((name, idx) => idx === index ? updatedSVName : name), 
+    }
   }));
 };
 
 
-const handleListNameChange = (e) => {
-  handleListDataChange('listName', e.target.value);
-};
 
-const handleRowLabelChange = (e) => {
-  handleListDataChange('rowLabel', e.target.value);
-};
-
-const handleAddRowValues = (e) => {
-  handleListDataChange('isRowValues', !listData.isRowValues)
-}
-
-const handleCollapseDupes = (e) => {
-  handleListDataChange('isCollapseDupes', !listData.isCollapseDupes)
-}
-
-const handleAddStylevar = () =>{
-  // TODO: handleAddStylevar
-  console.log("TODO: handleAddStylevar")
-}
-
-const handleListRowsChange = (e) => {
-  handleListDataChange('listRows', e.target.value.split('\n'));
-};
-
-const handleStyleVarChange = (e) => {
-  handleListDataChange('styleVars', {
-    ...listData.styleVars,
-    name: e.target.value.split(','),
-  });
-};
-
-const handleStyleVarValueChange = (e) => {
-  handleListDataChange('styleVars', {
-    ...listData.styleVars,
-    values: e.target.value.split(','),
-  });
+// Function to Update Style Var Values
+const handleStyleVarValueChange = (e, index) => {
+  const updatedSVValues = e.target.value.split('\n');  // Split input by newlines
+  setListData(prevState => ({
+    ...prevState,
+    styleVars: {
+      ...prevState.styleVars,
+      values: prevState.styleVars.values.map((values, idx) => idx === index ? updatedSVValues : values), // Update specific index
+    }
+  }));
 };
 
 
-
+// Function to Remove Style Var
+  const handleRemoveStylevar = (indexToRemove) => {
+    
+    // const indexToRemove = listData.styleVars.name.indexOf(SVName);
+  
+    if (indexToRemove !== -1) {
+      setListData(prevState => {
+        const newStyleVarsName = prevState.styleVars.name.filter((name, index) => index !== indexToRemove);
+        const newStyleVarsValues = prevState.styleVars.values.filter((values, index) => index !== indexToRemove);
+  
+        return {
+          ...prevState,
+          styleVars: {
+            name: newStyleVarsName,
+            values: newStyleVarsValues,
+          }
+        };
+      });
+    }
+  }
+  
 
 
   return (
     <>
       <main id='mainContainer'>
 
-        <HeaderContainer 
-        listName={listData.listName}
-        handleListNameChange={handleListNameChange}
-        rowLabel={listData.rowLabel}
-        handleRowLabelChange={handleRowLabelChange}
-        isAddRowValues={listData.isRowValues}
-        handleAddRowValues={handleAddRowValues}
-        isCollapseDupes={listData.isCollapseDupes}
-        handleCollapseDupes={handleCollapseDupes}
-        handleAddStylevar={handleAddStylevar}
-        /> 
+        <HeaderContainer
+          listName={listData.listName}
+          handleListNameChange={handleListNameChange}
+          rowLabel={listData.rowLabel}
+          handleRowLabelChange={handleRowLabelChange}
+          isAddRowValues={listData.isRowValues}
+          handleAddRowValues={handleAddRowValues}
+          isCollapseDupes={listData.isCollapseDupes}
+          handleCollapseDupes={handleCollapseDupes}
+          handleAddStylevar={handleAddStylevar}
+        />
+
+<button type="button"
+          onClick={()=> console.log(listData)}
+          >Show List Data</button>
 
         <div className="contentContainer">
-            <ListContainer 
+          <ListContainer
             listRows={listData.listRows.join("\n").split(',')}
             handleListRowsChange={handleListRowsChange}
             handleClearText={handleListDataChange}
-            />
-            <SVContainer />
+          />
 
 
-            <OutputContainer
+
+          {listData.styleVars.name.map((SVName, index) => {
+            return(
+              <SVContainer
+                    key={`${SVName}-${index}`}
+                    index={index}
+                    SVName={SVName}
+                    SVValue={listData.styleVars.values[index].join("\n").split(',')}
+                    handleStyleVarChange={handleStyleVarChange}
+                    handleStyleVarValueChange={handleStyleVarValueChange}
+                    handleRemoveStylevar={handleRemoveStylevar}
+                  />
+            );
+          })}
+
+
+
+          <OutputContainer
             outputValue={output.join("\n")}
-            
-            />
+
+          />
 
         </div>
 
