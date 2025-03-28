@@ -123,8 +123,6 @@ const handleStyleVarValueChange = (e, index) => {
 
 // Function to Remove Style Var
   const handleRemoveStylevar = (indexToRemove) => {
-    
-    // const indexToRemove = listData.styleVars.name.indexOf(SVName);
   
     if (indexToRemove !== -1) {
       setListData(prevState => {
@@ -142,11 +140,14 @@ const handleStyleVarValueChange = (e, index) => {
     }
   }
 
-
+// Function to Generate List
 const handleGenList = () =>{
   setOutput(genList(listData))
 }
 
+const handleClearOutput = () =>{
+  setOutput("")
+}
 
 
   
@@ -200,8 +201,7 @@ const handleGenList = () =>{
           <OutputContainer
             outputValue={output}
             handleGenList={handleGenList}
-            
-
+            handleClearOutput={handleClearOutput}
           />
 
         </div>

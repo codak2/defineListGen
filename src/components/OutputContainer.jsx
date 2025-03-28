@@ -1,7 +1,8 @@
 import React from 'react'
 
-const OutputContainer = (props) => {
+import downloadAsFile from "../utils/downloadAsFile.js"
 
+const OutputContainer = (props) => {
 
   return (
     <>
@@ -19,11 +20,14 @@ const OutputContainer = (props) => {
               <button type="button"
               onClick={props.handleGenList}
               >Generate List</button>
-              <button type="button">Save to file</button>
               <button type="button"
-              onClick={()=>{navigator.clipboard.writeText(props.outputValue)}}
-              >Copy Output</button>
-              <button type="button">Clear Output</button>
+              onClick={()=>downloadAsFile(props.outputValue)}>Download as File</button>
+              <button type="button"
+              onClick={()=>navigator.clipboard.writeText(props.outputValue)}
+              >Copy to Clipboard</button>
+              <button type="button"
+              onClick={props.handleClearOutput}
+              >Clear Output</button>
             </div>
           </div>
     </>
