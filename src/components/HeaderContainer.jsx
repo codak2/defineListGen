@@ -38,6 +38,11 @@ const HeaderContainer = (props) => {
           <button type="button"
           onClick={props.handleAddStylevar}
           >Add Stylevar</button>
+
+          <button type="button"
+          onClick={props.handleResetListData}
+          >Reset All</button>
+
         </div>
     </>
   )

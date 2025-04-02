@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
 //components
@@ -13,6 +13,19 @@ import genList from "./utils/genList.js"
 
 
 function App() {
+
+  const initialListData={
+    listName: "",
+    styleVars: {
+      name: [],
+      values: [],
+    },
+    rowLabel: "",
+    isRowValues: false,
+    isCollapseDupes: false,
+    listRows: [
+    ]
+  }
 
   let [listData, setListData] = useState({
     listName: "BrandList",
@@ -50,7 +63,6 @@ function App() {
 
   let [output, setOutput] = useState("");
 
-
   const handleListDataChange = (key, value) => {
     setListData(prevState => ({
       ...prevState,
@@ -79,7 +91,7 @@ function App() {
   const handleAddStylevar = () => {
     const newSVName = ""; 
     const newSVValues = [""]; 
-  
+
     setListData(prevState => ({
       ...prevState,
       styleVars: {
@@ -149,7 +161,10 @@ const handleClearOutput = () =>{
   setOutput("")
 }
 
-
+const handleResetListData = () => {
+  setListData(initialListData)
+  handleClearOutput()
+}
   
 
 
@@ -167,6 +182,7 @@ const handleClearOutput = () =>{
           isCollapseDupes={listData.isCollapseDupes}
           handleCollapseDupes={handleCollapseDupes}
           handleAddStylevar={handleAddStylevar}
+          handleResetListData={handleResetListData}
         />
 
 <button type="button"
