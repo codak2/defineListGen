@@ -1,6 +1,7 @@
 import React from 'react'
 
 import downloadAsFile from "../utils/downloadAsFile.js"
+import copyToClipboard from "../utils/copyToClipboard.js"
 
 const OutputContainer = (props) => {
 
@@ -23,7 +24,7 @@ const OutputContainer = (props) => {
               <button type="button"
               onClick={()=>downloadAsFile(props.outputValue)}>Download as File</button>
               <button type="button"
-              onClick={()=>navigator.clipboard.writeText(props.outputValue)}
+              onClick={()=>copyToClipboard(props.outputValue)}
               >Copy to Clipboard</button>
               <button type="button"
               onClick={props.handleClearOutput}
