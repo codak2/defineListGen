@@ -7,6 +7,7 @@ const initialListData = {
     rowLabel: "",
     isRowValues: false,
     isCollapseDupes: false,
+    isError: false,
     listRows: []
   }
 
