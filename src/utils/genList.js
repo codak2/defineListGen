@@ -24,10 +24,13 @@ function genList(testData) {
         // Output the final result
         console.log(SVOut+listHeader+listRowsOut + listFooter);
 
-        return (SVOut + listHeader + listRowsOut + listFooter)
+        let finalOutput = SVOut + listHeader + listRowsOut + listFooter;
+
+        return {statusCode: 200, errMsg: null, genOutput: finalOutput}
 
     } catch (error) {
         console.error('Error generating list:', error.message);
+        return {statusCode: 1, errMsg: error.message, genOutput: null }
     }
 }
 

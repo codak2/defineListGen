@@ -12,7 +12,7 @@ const OutputContainer = (props) => {
               <textarea name="" id="" 
               placeholder='Output will be generated here....' 
               cols="40" rows="40"
-              value={props.outputValue}
+              value={props.isError ? "Please fix the Error and Try Again." : props.outputValue}
               readOnly
               />
             </label>
@@ -22,7 +22,8 @@ const OutputContainer = (props) => {
               onClick={props.handleGenList}
               >Generate List</button>
               <button type="button"
-              onClick={()=>downloadAsFile(props.outputValue)}>Download as File</button>
+              onClick={()=>downloadAsFile(props.outputValue)}
+              >Download as File</button>
               <button type="button"
               onClick={()=>copyToClipboard(props.outputValue)}
               >Copy to Clipboard</button>
