@@ -10,7 +10,7 @@ const SVContainer = (props) => {
               placeholder='Enter Stylevar Values' 
               cols="30" 
               rows="40"
-              value={props.SVValue.join("\n")}
+              value={props.SVValue}
               onChange={(e) => props.handleStyleVarValueChange(e, props.index)}
               />
             </label>

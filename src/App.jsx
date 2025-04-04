@@ -179,7 +179,7 @@ function App() {
                 key={`${SVName}-${index}`}
                 index={index}
                 SVName={SVName}
-                SVValue={listData.styleVars.values[index].join("\n").split(',')}
+                SVValue={listData.styleVars.values[index].join("\n")}
                 handleStyleVarChange={handleStyleVarChange}
                 handleStyleVarValueChange={handleStyleVarValueChange}
                 handleRemoveStylevar={handleRemoveStylevar}
