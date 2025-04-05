@@ -2,7 +2,7 @@
 function genStyleVars(SVNameArray) {
     let SVOut = '';
     SVNameArray.forEach(sv => {
-        SVOut += `<stylevar label="cs:${sv}"/> \n`;
+        SVOut += `<stylevar name="cs:${sv}"/> \n`;
     });
     return SVOut;
 }
