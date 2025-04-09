@@ -4,22 +4,23 @@ A Define List Generator, to create reusable complex define lists in seconds.
 
 ## Functions
 - Add value to rows
+- Collapse duplicate row names and merge their stylevars
 - Add/ Remove Style Vars as per requirement
 - Reset button to clear all fields
 - Generate list in a second
+- Display errors messages on screen if something is wrong
 - Copy output to clipboard
 - Download output list as text file
 
 ## TODOs
 - Out of focus, while typing stylevar name.
-- Display errors on screen as a pop-up or alert message.
-- Handle duplicate row names, collapse duplicates functionality
 - Create Docs about the tool.
 
 
 
+---
 
-# Made with React + Vite
+## Made with React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
