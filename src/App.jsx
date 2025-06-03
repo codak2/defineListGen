@@ -14,6 +14,7 @@ import genList from "./utils/genList.js"
 // Data
 import initialListData from './data/initialListData.js'
 import sampleListData from "./data/sampleListData.js"
+import GroupsContainer from './components/GroupsContainer.jsx'
 
 
 function App() {
@@ -171,6 +172,11 @@ function App() {
             handleClearText={handleListDataChange}
           />
 
+
+
+          <GroupsContainer
+            grpValList={listData.groupValues.join("\n")}
+          />
 
 
           {listData.styleVars.name.map((SVName, index) => {
