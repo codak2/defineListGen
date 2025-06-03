@@ -17,6 +17,14 @@ const sampleListData = {
         ["EST", "EST", "EST", "EST", "GMT", "GMT", "GMT", "GMT"],
       ],
     },
+    groupsArr: [{
+      groupLabel: "g1",
+      groupName: "Group A",
+    },{
+      groupLabel: "g2",
+      groupName: "Group B",
+    }],
+    groupValues: ['g1','g1','g1','g1','g2','g2','g2','g2'],
     rowLabel: "Br",
     isRowValues: true,
     isCollapseDupes: true,
