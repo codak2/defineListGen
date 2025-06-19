@@ -198,6 +198,7 @@ function App() {
           <OutputContainer
             isError={listData.isError}
             outputValue={output}
+            listFileName={listData.listName}
             handleGenList={handleGenList}
             handleClearOutput={handleClearOutput}
           />

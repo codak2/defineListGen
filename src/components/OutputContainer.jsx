@@ -22,7 +22,7 @@ const OutputContainer = (props) => {
               onClick={props.handleGenList}
               >Generate List</button>
               <button type="button"
-              onClick={()=>downloadAsFile(props.outputValue)}
+              onClick={()=>downloadAsFile(props.outputValue, props.listFileName)}
               >Download as File</button>
               <button type="button"
               onClick={()=>copyToClipboard(props.outputValue)}
