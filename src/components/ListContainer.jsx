@@ -8,7 +8,7 @@ const ListContainer = (props) => {
               <textarea name="" id="" 
               placeholder='Enter List Rows' 
               cols="40" 
-              rows="40"
+              rows="30"
               value={props.listRows}
               onChange={props.handleListRowsChange}
               />

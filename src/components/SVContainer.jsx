@@ -9,7 +9,7 @@ const SVContainer = (props) => {
               <textarea name="" id="" 
               placeholder='Enter Stylevar Values' 
               cols="30" 
-              rows="40"
+              rows="30"
               value={props.SVValue}
               onChange={(e) => props.handleStyleVarValueChange(e, props.index)}
               />

@@ -11,7 +11,7 @@ const OutputContainer = (props) => {
             <label htmlFor=""> Output <br />
               <textarea name="" id="" 
               placeholder='Output will be generated here....' 
-              cols="40" rows="40"
+              cols="40" rows="30"
               value={props.isError ? "Please fix the Error and Try Again." : props.outputValue}
               readOnly
               />
