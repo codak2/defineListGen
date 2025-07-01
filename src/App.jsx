@@ -112,6 +112,25 @@ function App() {
     }
   }
 
+  // Function to Add Group
+  const handleAddGroup = () => {
+    const grpLabel = "";
+    const grpName = "";
+
+    setListData(prevState => ({
+      ...prevState,
+      groups:{
+        groupNames: [...prevState.groups.groupNames,{
+          groupLabel: grpLabel,
+          groupName: grpName,
+        }],
+        groupValues: [...prevState.groups.groupValues]
+    }
+    }));
+  };
+
+
+
   // Function to Generate List
   const handleGenList = () => {
     let { statusCode, errMsg, genOutput } = genList(listData)
@@ -152,6 +171,7 @@ function App() {
           handleCollapseDupes={handleCollapseDupes}
           handleAddStylevar={handleAddStylevar}
           handleResetListData={handleResetListData}
+          handleAddGroup={handleAddGroup}
         />
 
         <ErrorContainer
@@ -159,10 +179,10 @@ function App() {
           ErrMsg={output}
         />
 
-        {/*  Dubug button
+         Dubug button
           <button type="button"
           onClick={()=> console.log(listData)}
-          >Show List Data</button> */}
+          >Show List Data</button>
 
 
         <div className="contentContainer">
@@ -172,11 +192,9 @@ function App() {
             handleClearText={handleListDataChange}
           />
 
-
-
-          <GroupsContainer
-            grpValList={listData.groupValues.join("\n")}
-          /> 
+              { (listData.groups.groupNames.length > 0) && 
+                ( <GroupsContainer groups={listData.groups} />) }
+         
 
 
           {listData.styleVars.name.map((SVName, index) => {
