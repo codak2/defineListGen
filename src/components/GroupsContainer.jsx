@@ -9,7 +9,7 @@ const GroupsContainer = (props) =>{
               <textarea name="" id="" 
               placeholder='Enter Groups Values' 
               cols="30" 
-              rows="40"
+              rows="30"
               value={props.grpValList}
             //   onChange={(e) => props.handleStyleVarValueChange(e, props.index)}
               />

@@ -174,9 +174,9 @@ function App() {
 
 
 
-          {/* <GroupsContainer
+          <GroupsContainer
             grpValList={listData.groupValues.join("\n")}
-          /> */}
+          /> 
 
 
           {listData.styleVars.name.map((SVName, index) => {
