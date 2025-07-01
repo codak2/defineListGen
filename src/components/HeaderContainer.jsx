@@ -40,6 +40,14 @@ const HeaderContainer = (props) => {
           >Add Stylevar</button>
 
           <button type="button"
+          onClick={props.handleAddGroup}
+          >Add Group</button>
+
+
+
+          
+
+          <button type="button"
           onClick={props.handleResetListData}
           >Reset All</button>
 
