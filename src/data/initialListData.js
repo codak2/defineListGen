@@ -4,11 +4,10 @@ const initialListData = {
       name: [],
       values: [],
     },
-    groupsArr: [{
-      groupLabel: "",
-      groupName: "",
-    }],
-    groupValues: [],
+    groups:{
+        groupNames: [],
+        groupValues: [],
+    },
     rowLabel: "",
     isRowValues: false,
     isCollapseDupes: false,
