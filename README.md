@@ -1,23 +1,22 @@
 # Reusable Define List Generator
-A tool which can create reusable complex define lists in seconds.
+A tool which can create reusable complex define list.
 
 ## Functions
-- Add value to rows
-- Collapse duplicate row names and merge their stylevars
-- Add/ Remove Style Vars as per requirement
+- Add values to rows
+- Collapse duplicate rows and merge their stylevars
+- Add/Remove Style Vars as per requirements
 - Reset button to clear all fields
 - Generate list in a second
-- Display errors messages on screen if something is wrong
+- Display errors messages on screen if something went wrong
 - Copy output to clipboard
 - Download output list as text file
 
 ## TODOs [upcoming features]
-- Stylevar name out of focus, while typing stylevar name.
 - Add groups for rows
 - Load define list from .txt file or by pasting it in output box
 - Make editable output box
 - remove specific rows with row labels (adding where="report,notdp")
-- add new rows
+- add new rows in existing rows
 - Create Docs about the tool.
 
 
@@ -46,20 +45,3 @@ A tool which can create reusable complex define lists in seconds.
 - run `npm install` and wait until it finish installing all dependencies
 - Then run `npm run dev` and wait for few seconds
 - It will start up in browser directly or give you link in terminal to open it.
-
-
-
----
-
-## Made with React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
