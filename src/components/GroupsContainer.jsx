@@ -20,7 +20,7 @@ const GroupsContainer = (props) =>{
   props.groups.groupNames.map((grpName, index)=>{
     return(
                   <div>
-                    <label htmlFor=""> Group Label <br />
+                    <label htmlFor=""> Group Label
                         <input type="text" 
                         key={`${grpName.groupLabel}-${index}`}
                         index={index}
@@ -30,14 +30,18 @@ const GroupsContainer = (props) =>{
                       </label>
                       <br />
 
-                      <label htmlFor=""> Group Name <br />
+                      <label htmlFor=""> Group Name 
                         <input type="text" 
                         key={`${grpName.groupName}-${index}`}
-                        index={index+1}
+                        index={index}
                         placeholder='Enter Group Name'
                         value={grpName.groupName}
                         />
                       </label>
+
+                      <button type="button"
+                        onClick={() => props.handleRemoveStylevar(props.index)}
+                        >Remove Stylevar</button>
                   </div>
     )
   })

@@ -112,6 +112,7 @@ function App() {
     }
   }
 
+  // -------------------------------- Start :: Functions for Groups -----------------
   // Function to Add Group
   const handleAddGroup = () => {
     const grpLabel = "";
@@ -129,6 +130,54 @@ function App() {
     }));
   };
 
+// Function to Update Group Label (TODO)
+  const handleGrpLabelChange = (e, index) => {
+    const updatedSVName = e.target.value;
+    setListData(prevState => ({
+      ...prevState,
+      styleVars: {
+        ...prevState.styleVars,
+        name: prevState.styleVars.name.map((name, idx) => idx === index ? updatedSVName : name),
+      }
+    }));
+  };
+
+  // Function to Update Group Label (TODO)
+  const handleGrpNameChange = (e, index) => {
+    const updatedSVName = e.target.value;
+    setListData(prevState => ({
+      ...prevState,
+      styleVars: {
+        ...prevState.styleVars,
+        name: prevState.styleVars.name.map((name, idx) => idx === index ? updatedSVName : name),
+      }
+    }));
+  };
+
+
+  // Function to Remove Style Var
+  const handleRemoveGroup = (indexToRemove) => {
+
+    if (indexToRemove !== -1) {
+      setListData(prevState => {
+        const newStyleVarsName = prevState.styleVars.name.filter((name, index) => index !== indexToRemove);
+        const newStyleVarsValues = prevState.styleVars.values.filter((values, index) => index !== indexToRemove);
+
+        return {
+          ...prevState,
+          styleVars: {
+            name: newStyleVarsName,
+            values: newStyleVarsValues,
+          }
+        };
+      });
+    }
+  }
+
+
+
+
+  // -------------------------------- End :: Functions for Groups -----------------
 
 
   // Function to Generate List
@@ -193,7 +242,13 @@ function App() {
           />
 
               { (listData.groups.groupNames.length > 0) && 
-                ( <GroupsContainer groups={listData.groups} />) }
+                ( <GroupsContainer 
+                groups={listData.groups}
+                handleAddGroup={handleAddGroup}
+                handleGrpLabelChange={handleGrpLabelChange}
+                handleGrpNameChange={handleGrpNameChange}
+                handleRemoveGroup={handleRemoveGroup}
+                />) }
          
 
 
