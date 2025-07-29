@@ -182,7 +182,7 @@ function App() {
           {listData.styleVars.name.map((SVName, index) => {
             return (
               <SVContainer
-                key={`${SVName}-${index}`}
+                key={`"SVContainer-"${index}`}
                 index={index}
                 SVName={SVName}
                 SVValue={listData.styleVars.values[index].join("\n")}
