@@ -1,5 +1,4 @@
-
-import React from 'react'
+// StyleVar Container Component for each Style Variable
 
 const SVContainer = (props) => {
   return (
@@ -32,5 +31,3 @@ const SVContainer = (props) => {
 }
 
 export default SVContainer
-
-// TODO: lost focus while typing stylevar name
