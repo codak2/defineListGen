@@ -3,8 +3,8 @@ import genStyleVars from "./genStyleVars.js"
 import genRows from "./genRows.js"
 import validateListData from "./validateListData.js"
 import removeDuplicateRows from "./removeDuplicateRows.js"
-import mergeStyleVars from "./mergeStyleVars.js";
-
+// import mergeStyleVars from "./mergeStyleVars.js";
+import genGroups from "./genGroups.js"
 
 // Main function to handle the entire process
 function genList(listData) {
@@ -19,20 +19,25 @@ function genList(listData) {
         }
 
         // Destructure needed values from listData
-        const { name: SVNameArray, values: SVValueArray } = listData.styleVars;
         const {listRows, rowLabel, isRowValues} = listData;
+        const { name: SVNameArray, values: SVValueArray } = listData.styleVars;
+        const { groupNames: grpNames, groupValues: grpVals } = listData.groups;
 
         // Generate style variables and list header/footer
         const SVOut = genStyleVars(SVNameArray);
+        
+        //Generate groups
+        const Grpout = genGroups(grpNames);
+
         const { listHeader, listFooter } = genHeadFoot(listData.listName);
 
         // Generate rows
-        const listRowsOut = genRows(listRows, SVNameArray, SVValueArray, rowLabel, isRowValues);
+        const listRowsOut = genRows(listRows, SVNameArray, SVValueArray, rowLabel, isRowValues, grpVals);
 
         // Output the final result
-        console.log(SVOut+listHeader+listRowsOut + listFooter);
+        console.log(SVOut+listHeader+Grpout+listRowsOut + listFooter);
 
-        let finalOutput = SVOut + listHeader + listRowsOut + listFooter;
+        let finalOutput = SVOut + listHeader + Grpout + listRowsOut + listFooter;
 
         return {statusCode: 200, errMsg: null, genOutput: finalOutput}
 
