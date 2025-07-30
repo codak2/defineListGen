@@ -130,44 +130,59 @@ function App() {
     }));
   };
 
-// Function to Update Group Label (TODO)
+// Function to Update Group Values
+const handleGrpValueChange = (e) => {
+  const updatedText = e.target.value;
+  const updatedGrpValues = updatedText.split("\n");
+
+  setListData(prevState => ({
+    ...prevState,
+    groups: {
+      ...prevState.groups,
+      groupValues: updatedGrpValues
+    }
+  }));
+};
+
+
+// Function to Update Group Label
   const handleGrpLabelChange = (e, index) => {
-    const updatedSVName = e.target.value;
+    const updatedGrpLabel = e.target.value;
     setListData(prevState => ({
       ...prevState,
-      styleVars: {
-        ...prevState.styleVars,
-        name: prevState.styleVars.name.map((name, idx) => idx === index ? updatedSVName : name),
+      groups: {
+        ...prevState.groups,
+        groupNames: prevState.groups.groupNames.map((group, idx) => idx === index ? {groupLabel: updatedGrpLabel, groupName: group.groupName} : group),
       }
     }));
   };
 
-  // Function to Update Group Label (TODO)
+  // Function to Update Group Name
   const handleGrpNameChange = (e, index) => {
-    const updatedSVName = e.target.value;
+    const updatedGrpName = e.target.value;
     setListData(prevState => ({
       ...prevState,
-      styleVars: {
-        ...prevState.styleVars,
-        name: prevState.styleVars.name.map((name, idx) => idx === index ? updatedSVName : name),
+      groups: {
+        ...prevState.groups,
+        groupNames: prevState.groups.groupNames.map((group, idx) => idx === index ? {groupLabel: group.groupLabel, groupName: updatedGrpName} : group),
       }
     }));
   };
 
 
-  // Function to Remove Style Var
+  // Function to Remove Group
   const handleRemoveGroup = (indexToRemove) => {
 
     if (indexToRemove !== -1) {
       setListData(prevState => {
-        const newStyleVarsName = prevState.styleVars.name.filter((name, index) => index !== indexToRemove);
-        const newStyleVarsValues = prevState.styleVars.values.filter((values, index) => index !== indexToRemove);
+        const newGroupName = prevState.groups.groupNames.filter((name, index) => index !== indexToRemove);
+        const newGroupValues = prevState.groups.groupValues.filter((values, index) => index !== indexToRemove);
 
         return {
           ...prevState,
-          styleVars: {
-            name: newStyleVarsName,
-            values: newStyleVarsValues,
+          groups: {
+            groupNames: newGroupName,
+            groupValues: newGroupValues,
           }
         };
       });
@@ -245,6 +260,7 @@ function App() {
                 ( <GroupsContainer 
                 groups={listData.groups}
                 handleAddGroup={handleAddGroup}
+                handleGrpValueChange={handleGrpValueChange}
                 handleGrpLabelChange={handleGrpLabelChange}
                 handleGrpNameChange={handleGrpNameChange}
                 handleRemoveGroup={handleRemoveGroup}

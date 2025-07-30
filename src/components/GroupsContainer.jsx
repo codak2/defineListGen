@@ -4,14 +4,14 @@ const GroupsContainer = (props) =>{
 
         <>
         
-        <div id="groupvalContainer" className='container2'>
+        <div id="groupsContainer" className='container2'>
             <label htmlFor=""> Group Values <br />
               <textarea name="" id="" 
               placeholder='Enter Groups Values' 
               cols="30" 
               rows="30"
               value={props.groups.groupValues.join("\n")}
-            //   onChange={(e) => props.handleStyleVarValueChange(e, props.index)}
+              onChange={props.handleGrpValueChange}
               />
             </label>
 
@@ -19,71 +19,36 @@ const GroupsContainer = (props) =>{
 {
   props.groups.groupNames.map((grpName, index)=>{
     return(
-                  <div>
-                    <label htmlFor=""> Group Label
-                        <input type="text" 
-                        key={`${grpName.groupLabel}-${index}`}
-                        index={index}
+                  <div 
+                  className="grp-details-container" 
+                  index={index}
+                  key={`"groupDetailContainer-"${index}`}
+                  >
+                    <label htmlFor=""> Group Label <br />
+                        <input type="text"
                         placeholder='Enter Group Label'
                         value={grpName.groupLabel}
+                        onChange={(e) => props.handleGrpLabelChange(e, index)}
                         />
                       </label>
                       <br />
 
-                      <label htmlFor=""> Group Name 
-                        <input type="text" 
-                        key={`${grpName.groupName}-${index}`}
-                        index={index}
+                      <label htmlFor=""> Group Name <br />
+                        <input type="text"
                         placeholder='Enter Group Name'
                         value={grpName.groupName}
+                        onChange={(e) => props.handleGrpNameChange(e, index)}
                         />
                       </label>
+                      <br />
 
                       <button type="button"
-                        onClick={() => props.handleRemoveStylevar(props.index)}
-                        >Remove Stylevar</button>
+                        onClick={() => props.handleRemoveGroup(index)}
+                        >Remove Group</button>
                   </div>
     )
   })
 }
-
-
-        
-
-
-            {/* 
-            
-           
-
-            <button type="button"
-            onClick={() => props.handleRemoveStylevar(props.index)}
-            >Remove Stylevar</button>
-            
-
- <label htmlFor=""> Group Label <br />
-                        <input type="text" 
-                        key={`${grpName.groupLabel}-${index}`}
-                        index={index}
-                        placeholder='Enter Group Label'
-                        value={grpName.groupLabel}
-                        // onChange={(e) => props.handleStyleVarChange(e, props.index)}
-                        />
-                      </label>
-
-                      <label htmlFor=""> Group Name <br />
-                        <input type="text" 
-                        key={`${grpName.groupName}-${index}`}
-                        index={index}
-                        placeholder='Enter Group Name'
-                        value={grpName.groupName}
-                        // onChange={(e) => props.handleStyleVarChange(e, props.index)}
-                        />
-                      </label>
-                    
-            
-            
-            
-            */}
             
           </div>
         
