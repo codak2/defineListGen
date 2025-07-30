@@ -5,6 +5,7 @@ A tool which can create reusable complex define list.
 - Add values to rows
 - Collapse duplicate rows and merge their stylevars
 - Add/Remove Style Vars as per requirements
+- Add/Remove groups for rows as per requirements
 - Reset button to clear all fields
 - Generate list in a second
 - Display errors messages on screen if something went wrong
@@ -12,7 +13,6 @@ A tool which can create reusable complex define list.
 - Download output list as text file
 
 ## TODOs [upcoming features]
-- Add groups for rows
 - Load define list from .txt file or by pasting it in output box
 - Make editable output box
 - remove specific rows with row labels (adding where="report,notdp")
