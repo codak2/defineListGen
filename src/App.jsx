@@ -175,14 +175,13 @@ const handleGrpValueChange = (e) => {
 
     if (indexToRemove !== -1) {
       setListData(prevState => {
-        const newGroupName = prevState.groups.groupNames.filter((name, index) => index !== indexToRemove);
-        const newGroupValues = prevState.groups.groupValues.filter((values, index) => index !== indexToRemove);
+        const newGroupNamesArray = prevState.groups.groupNames.filter((name, index) => index !== indexToRemove);
 
         return {
           ...prevState,
           groups: {
-            groupNames: newGroupName,
-            groupValues: newGroupValues,
+            ...prevState.groups,
+            groupNames: newGroupNamesArray,
           }
         };
       });
