@@ -242,11 +242,12 @@ const handleGrpValueChange = (e) => {
           ErrMsg={output}
         />
 
+{/*
          Dubug button
           <button type="button"
           onClick={()=> console.log(listData)}
           >Show List Data</button>
-
+  */}
 
         <div className="contentContainer">
           <ListContainer
