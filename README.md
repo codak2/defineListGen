@@ -34,7 +34,9 @@ A tool which can create reusable complex define list.
 
 ## How to install
 ### Method 1: Online Mode
-- Go to [defineListGen Tool](https://codak2.github.io/defineListGen/)
+- Go to any of the website below
+    - [Site 1](https://codak2.github.io/defineListGen/)
+    - [Site 2](https://definelistgen.netlify.app/)
 - Use directly in your browser.
 
 ### Method 2: Local Mode
@@ -43,5 +45,6 @@ A tool which can create reusable complex define list.
 - Extract the ZIP 
 - right click > select "Open in Terminal"
 - run `npm install` and wait until it finish installing all dependencies
+- Add .env file with VITE_APP_ENV variable
 - Then run `npm run dev` and wait for few seconds
 - It will start up in browser directly or give you link in terminal to open it.
