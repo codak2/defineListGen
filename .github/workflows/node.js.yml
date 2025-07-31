@@ -39,6 +39,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          VITE_APP_ENV: ${{ secrets.APP_ENV }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
@@ -49,6 +51,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-env:
-  VITE_APP_ENV: ${{ secrets.APP_ENV }}
