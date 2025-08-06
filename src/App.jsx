@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './App.css'
 
+import axios from 'axios';
+
 //components
 import HeaderContainer from "./components/HeaderContainer"
 import ListContainer from "./components/ListContainer"
@@ -182,6 +184,7 @@ const handleGrpValueChange = (e) => {
           groups: {
             ...prevState.groups,
             groupNames: newGroupNamesArray,
+            groupValues: (newGroupNamesArray.length > 0) ? prevState.groups.groupValues : []
           }
         };
       });
@@ -256,7 +259,7 @@ const handleGrpValueChange = (e) => {
             handleClearText={handleListDataChange}
           />
 
-              { (listData.groups.groupNames.length > 0) && 
+              { ((listData.groups.groupNames.length > 0) || (listData.groups.groupValues.length > 0)) && 
                 ( <GroupsContainer 
                 groups={listData.groups}
                 handleAddGroup={handleAddGroup}
