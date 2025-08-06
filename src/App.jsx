@@ -9,6 +9,7 @@ import ListContainer from "./components/ListContainer"
 import SVContainer from "./components/SVContainer"
 import OutputContainer from "./components/OutputContainer"
 import ErrorContainer from './components/ErrorContainer.jsx'
+import GroupsContainer from './components/GroupsContainer.jsx'
 
 // Main function to generate list
 import genList from "./utils/genList.js"
@@ -16,7 +17,6 @@ import genList from "./utils/genList.js"
 // Data
 import initialListData from './data/initialListData.js'
 import sampleListData from "./data/sampleListData.js"
-import GroupsContainer from './components/GroupsContainer.jsx'
 
 
 function App() {
