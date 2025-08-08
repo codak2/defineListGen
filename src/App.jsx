@@ -18,8 +18,10 @@ import GroupsContainer from './components/GroupsContainer.jsx'
 import initialListData from './data/initialListData.js'
 import sampleListData from "./data/sampleListData.js"
 
-// const API_URL = import.meta.env.VITE_APP_API_URL;
 // const API_URL = process.env.VITE_APP_API_URL;
+const API_URL = import.meta.env.VITE_APP_API_URL;
+
+console.log("env=> ",import.meta.env)
 
 function App() {
 
@@ -204,7 +206,7 @@ const handleGrpValueChange = (e) => {
 
     // console.log("API URL:", import.meta.env);
 
-  axios.post('https://definelistgen-backend.onrender.com/api/definelist', {
+  axios.post(`${API_URL}/api/definelist`, {
       listData : listData
     })
 .then(res => {
