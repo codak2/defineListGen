@@ -12,12 +12,14 @@ import ErrorContainer from './components/ErrorContainer.jsx'
 import GroupsContainer from './components/GroupsContainer.jsx'
 
 // Main function to generate list
-import genList from "./utils/genList.js"
+// import genList from "./utils/genList.js"
 
 // Data
 import initialListData from './data/initialListData.js'
 import sampleListData from "./data/sampleListData.js"
 
+// const API_URL = import.meta.env.VITE_APP_API_URL;
+// const API_URL = process.env.VITE_APP_API_URL;
 
 function App() {
 
@@ -199,16 +201,26 @@ const handleGrpValueChange = (e) => {
 
   // Function to Generate List
   const handleGenList = () => {
-    let { statusCode, errMsg, genOutput } = genList(listData)
 
-    if (statusCode == 1) {
-      setOutput(errMsg)
-      handleListDataChange("isError", true)
-    }
-    else if (statusCode == 200) {
-      setOutput(genOutput)
-      handleListDataChange("isError", false)
-    }
+    // console.log("API URL:", import.meta.env);
+
+  axios.post('https://definelistgen-backend.onrender.com/api/definelist', {
+      listData : listData
+    })
+.then(res => {
+  console.log("From API: ",res.data);
+  console.log("API response: ",res);
+  setOutput(res.data);
+  handleListDataChange("isError", false);
+})
+.catch(err => {
+  console.error("Error=> ",err);
+  const errorMessage = err.response?.data?.message || "Unexpected error occurred";
+  console.error("API Error Message =>", errorMessage);
+  setOutput(errorMessage);
+  handleListDataChange("isError", true);
+});
+
   }
 
   const handleClearOutput = () => {
