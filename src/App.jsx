@@ -10,6 +10,7 @@ import SVContainer from "./components/SVContainer"
 import OutputContainer from "./components/OutputContainer"
 import ErrorContainer from './components/ErrorContainer.jsx'
 import GroupsContainer from './components/GroupsContainer.jsx'
+import Loader from "./components/Loader.jsx"
 
 // Main function to generate list
 // import genList from "./utils/genList.js"
@@ -28,6 +29,9 @@ function App() {
   let [listData, setListData] = useState(sampleListData);
 
   let [output, setOutput] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
 
   const handleListDataChange = (key, value) => {
     setListData(prevState => ({
@@ -206,6 +210,8 @@ const handleGrpValueChange = (e) => {
 
     // console.log("API URL:", import.meta.env);
 
+    setLoading(true)
+
   axios.post(`${API_URL}/api/definelist`, {
       listData : listData
     })
@@ -214,6 +220,7 @@ const handleGrpValueChange = (e) => {
     console.log("From API: ",res.data);
     console.log("API response: ",res);
   }
+  setLoading(false)
   setOutput(res.data);
   handleListDataChange("isError", false);
 })
@@ -223,6 +230,7 @@ const handleGrpValueChange = (e) => {
     console.error("Error=> ",err);
     console.error("API Error Message =>", errorMessage);
   }
+  setLoading(false)
   setOutput(errorMessage);
   handleListDataChange("isError", true);
 });
@@ -243,7 +251,8 @@ const handleGrpValueChange = (e) => {
   return (
     <>
       <main id='mainContainer'>
-
+        { loading && <Loader /> 
+        } 
         <HeaderContainer
           listName={listData.listName}
           handleListNameChange={handleListNameChange}
