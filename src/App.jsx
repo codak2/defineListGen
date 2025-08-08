@@ -20,8 +20,8 @@ import sampleListData from "./data/sampleListData.js"
 
 // const API_URL = process.env.VITE_APP_API_URL;
 const API_URL = import.meta.env.VITE_APP_API_URL;
+// console.log("env=> ",import.meta.env)
 
-console.log("env=> ",import.meta.env)
 
 function App() {
 
@@ -210,15 +210,19 @@ const handleGrpValueChange = (e) => {
       listData : listData
     })
 .then(res => {
-  console.log("From API: ",res.data);
-  console.log("API response: ",res);
+  if (import.meta.env.MODE === "development"){
+    console.log("From API: ",res.data);
+    console.log("API response: ",res);
+  }
   setOutput(res.data);
   handleListDataChange("isError", false);
 })
 .catch(err => {
-  console.error("Error=> ",err);
   const errorMessage = err.response?.data?.message || "Unexpected error occurred";
-  console.error("API Error Message =>", errorMessage);
+  if (import.meta.env.MODE === "development"){
+    console.error("Error=> ",err);
+    console.error("API Error Message =>", errorMessage);
+  }
   setOutput(errorMessage);
   handleListDataChange("isError", true);
 });
