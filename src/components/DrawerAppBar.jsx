@@ -29,7 +29,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Define List Generator
       </Typography>
       <Divider />
       <List>
@@ -60,6 +60,7 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <IconButton
+          sx={{ display: { xs: 'none', sm: 'block' } }}
             color="inherit">
               <ListAltIcon />
             </IconButton>
@@ -70,6 +71,7 @@ function DrawerAppBar(props) {
           >
             Define List Generator
           </Typography>
+          
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: '#fff' }}>
