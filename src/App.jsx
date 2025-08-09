@@ -238,6 +238,12 @@ const handleGrpValueChange = (e) => {
   }
 
   const handleClearOutput = () => {
+    // validate if outputValue has error
+    if (listData.isError) {
+      alert("Please fix the error before clearing the output.");
+      return;
+    }
+    // Clear the output value
     setOutput("")
   }
 
