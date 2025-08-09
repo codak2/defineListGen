@@ -8,15 +8,16 @@ import Stack from '@mui/material/Stack';
 const ErrorContainer = (props) => {
     return (
         <>
-        <Stack>
             {props.isError &&
                 (
-                    <Alert severity="error">
-                        <AlertTitle>Error</AlertTitle>
-                        {props.ErrMsg}
-                    </Alert>
-                )}
-        </Stack>
+                    <Stack sx={{ marginTop: '2rem' }}>
+                        <Alert severity="error">
+                            <AlertTitle>Error</AlertTitle>
+                            {props.ErrMsg}
+                        </Alert>
+                    </Stack>
+                )
+            }
         </>
     )
 }
