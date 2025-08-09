@@ -11,9 +11,7 @@ import OutputContainer from "./components/OutputContainer"
 import ErrorContainer from './components/ErrorContainer.jsx'
 import GroupsContainer from './components/GroupsContainer.jsx'
 import Loader from "./components/Loader.jsx"
-
-// Main function to generate list
-// import genList from "./utils/genList.js"
+import DrawerAppBar from './components/DrawerAppBar.jsx';
 
 // Data
 import initialListData from './data/initialListData.js'
@@ -257,8 +255,8 @@ const handleGrpValueChange = (e) => {
   return (
     <>
       <main id='mainContainer'>
-        { loading && <Loader /> 
-        } 
+        { loading && <Loader /> } 
+        <DrawerAppBar />
         <HeaderContainer
           listName={listData.listName}
           handleListNameChange={handleListNameChange}
