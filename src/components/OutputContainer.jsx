@@ -82,7 +82,7 @@ const OutputContainer = (props) => {
         <div className="container1">
           <Button
             variant="contained"
-            sx={{ borderRadius: "10px"}}
+            sx={{ borderRadius: "8px"}}
             onClick={props.handleGenList}>Generate List</Button>
 
           <button type="button"
