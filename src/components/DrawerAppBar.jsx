@@ -16,7 +16,13 @@ import Button from '@mui/material/Button';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Docs'];
+const navItems = {
+  'Home': '/',
+  'About': '/about',
+  'Docs': '/docs'
+};
+
+
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -33,10 +39,10 @@ function DrawerAppBar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+        {Object.entries(navItems).map(([label, path]) => (
+          <ListItem key={label} disablePadding>
+            <ListItemButton component="a" href={path} sx={{ textAlign: 'center' }}>
+              <ListItemText primary={label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -60,10 +66,10 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <IconButton
-          sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' } }}
             color="inherit">
-              <ListAltIcon />
-            </IconButton>
+            <ListAltIcon />
+          </IconButton>
           <Typography
             variant="h6"
             component="div"
@@ -71,11 +77,16 @@ function DrawerAppBar(props) {
           >
             Define List Generator
           </Typography>
-          
+
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+            {Object.entries(navItems).map(([label, path]) => (
+              <Button
+                key={label}
+                component="a"
+                href={path}
+                sx={{ color: '#fff', textTransform: 'none' }}
+              >
+                {label}
               </Button>
             ))}
           </Box>
