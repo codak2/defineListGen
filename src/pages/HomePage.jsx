@@ -19,7 +19,11 @@ import sampleListData from "../data/sampleListData.js"
 
 // const API_URL = process.env.VITE_APP_API_URL;
 const API_URL = import.meta.env.VITE_APP_API_URL;
+const APP_ENV = import.meta.env.VITE_APP_ENV;
 // console.log("env=> ",import.meta.env)
+
+// validations utility
+import validateListData from '../utils/validateListData.js';
 
 
 function App() {
@@ -206,6 +210,28 @@ const handleGrpValueChange = (e) => {
   // Function to Generate List
   const handleGenList = () => {
 
+    try{
+      // Validations for List Data
+    validateListData(listData);
+
+    // clearing previous output
+    setOutput("");
+      handleListDataChange("isError", false);
+
+    }catch(err){
+      if (APP_ENV === "development"){
+        console.error('Error generating list:', err.message);
+      }
+      setOutput(err.message);
+      handleListDataChange("isError", true);
+      return;
+    }
+
+
+    
+
+    
+
     // console.log("API URL:", import.meta.env);
 
     setLoading(true)
@@ -214,7 +240,7 @@ const handleGrpValueChange = (e) => {
       listData : listData
     })
 .then(res => {
-  if (import.meta.env.MODE === "development"){
+  if (APP_ENV === "development"){
     console.log("From API: ",res.data);
     console.log("API response: ",res);
   }
@@ -224,7 +250,7 @@ const handleGrpValueChange = (e) => {
 })
 .catch(err => {
   const errorMessage = err.response?.data?.message || "Unexpected error occurred";
-  if (import.meta.env.MODE === "development"){
+  if (APP_ENV === "development"){
     console.error("Error=> ",err);
     console.error("API Error Message =>", errorMessage);
   }
